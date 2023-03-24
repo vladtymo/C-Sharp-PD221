@@ -1,6 +1,6 @@
 ﻿using System;
 
-Console.WriteLine("Working with Arrays!");
+Console.WriteLine("Working with Array!");
 
 // class Array - contains all properties and methods
 int[] array = new int[] { 2, 6, 8, 23, -4, 0, 44, 23, 4, -1 };
