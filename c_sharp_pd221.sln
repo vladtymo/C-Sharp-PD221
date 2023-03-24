@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_base", "01_base\01_base.csproj", "{8149E569-1DA4-4D49-9337-9B30F9FBCC7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_arrays", "02_arrays\02_arrays.csproj", "{55F9F7FC-DB4E-418C-9F9A-2A6A3884882A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_arrays", "02_arrays\02_arrays.csproj", "{55F9F7FC-DB4E-418C-9F9A-2A6A3884882A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_enums", "03_enums\03_enums.csproj", "{32A74984-93DA-4E9A-A341-FB1B89E131CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{55F9F7FC-DB4E-418C-9F9A-2A6A3884882A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F9F7FC-DB4E-418C-9F9A-2A6A3884882A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F9F7FC-DB4E-418C-9F9A-2A6A3884882A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A74984-93DA-4E9A-A341-FB1B89E131CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A74984-93DA-4E9A-A341-FB1B89E131CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A74984-93DA-4E9A-A341-FB1B89E131CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A74984-93DA-4E9A-A341-FB1B89E131CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
