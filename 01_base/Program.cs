@@ -32,6 +32,14 @@ namespace _01_base
 
             string strVal = "some string value...";
 
+            // ---------- base type Syste.Object ----------
+            object obj = new object();
+
+            Console.WriteLine($"Type: {obj.GetType()}");
+            Console.WriteLine($"Equals: {obj.Equals(123)}");
+            Console.WriteLine($"Hash Code: {obj.GetHashCode()}");
+            Console.WriteLine($"String: {obj.ToString()}"); // automatically ToString()
+
             // -------------- literals --------------
             // GetType() - get information of the variable type
             Type type = strVal.GetType();
