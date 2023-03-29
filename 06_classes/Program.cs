@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using _06_classes.Partials;
+using System.Drawing;
 using System.Globalization;
 using System.Text;
 
