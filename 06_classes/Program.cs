@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Drawing;
+using System.Globalization;
 using System.Text;
 
 namespace _06_classes
@@ -12,7 +13,7 @@ namespace _06_classes
      * public
      */
 
-    internal class Door // : object - interite System.Object by default
+    internal class Door //: Object - interite System.Object by default
     {
         // ============ fields ============
         // private by default
@@ -21,11 +22,14 @@ namespace _06_classes
         private int width;
         private int height;
 
-        // const - can be initialized only
+        // const (static implicit) - can be initialized only
         public const string type = "Furniture";
 
         // readonly - can initialize or set in constructors only
         private readonly DateTime creationDate;
+
+        // static - has a signle instance for the all objects
+        private static int identifier; 
 
         // ============ properties ============
         // ------------ full property 
@@ -46,7 +50,10 @@ namespace _06_classes
         // we can do the same with the auto-properties
         // ------------ auto property - auto create a file with simple getter and setter logic
         // snippet: prop
-        public float Thickness { get; set; }
+        public float Thickness { get; set; } // private set
+
+        // init-only property
+        public string Brand { get; init; }           
 
         // readonly property - has getter only
         public double Area
@@ -57,7 +64,18 @@ namespace _06_classes
             }
         }
 
+        // static property
+        public static int ID { get { return identifier; } }
+
         // ============ constructors ============
+        // static cnstructors - invokes automatically, use for initialize static members
+        static Door() 
+        {
+            Random rand = new Random();
+            identifier = rand.Next(10);
+        }
+
+        public Door() { }
         public Door(string color, string material)
             : this(color, material, 100, 210)
         {
@@ -110,6 +128,10 @@ namespace _06_classes
     {
         static void Main(string[] args)
         {
+            // get static members
+            Console.WriteLine("ID: " + Door.ID);
+            Console.WriteLine("Type: " + Door.type);
+
             Door myDoor = new Door("Brown", "Wood");
 
             myDoor.Show();
@@ -123,7 +145,19 @@ namespace _06_classes
             myDoor.Height = 125;
             Console.WriteLine($"Height: {myDoor.Height} cm");
 
+            //myDoor.Material = "Glass"; // inaccessible
+
             Console.WriteLine($"Area of the door: {myDoor.Area} cm^2");
+
+            // use object initializer
+            Door yourDoor = new Door("White", "Metal")
+            {
+                Thickness = 7.5F,
+                Height = 235,
+                Brand = "Blest" 
+            };
+
+            //yourDoor.Brand = "Blabla"; // init-only
         }
     }
 }
