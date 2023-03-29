@@ -14,7 +14,7 @@ namespace _06_classes
      * public
      */
 
-    internal class Door //: Object - interite System.Object by default
+    public class Door //: Object - interite System.Object by default
     {
         // ============ fields ============
         // private by default
