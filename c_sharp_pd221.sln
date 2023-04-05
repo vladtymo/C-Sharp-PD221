@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_ref_out_params", "08_ref
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_exceptions", "09_exceptions\09_exceptions.csproj", "{C449098A-F60F-4480-A4EA-2E18AE049F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_overloading", "10_overloading\10_overloading.csproj", "{7DDFC483-0988-463E-B449-7E79B16E1C95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_overloading", "10_overloading\10_overloading.csproj", "{7DDFC483-0988-463E-B449-7E79B16E1C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_inheritance", "11_inheritance\11_inheritance.csproj", "{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{7DDFC483-0988-463E-B449-7E79B16E1C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DDFC483-0988-463E-B449-7E79B16E1C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DDFC483-0988-463E-B449-7E79B16E1C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
