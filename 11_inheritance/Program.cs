@@ -11,6 +11,8 @@
         {
             Console.WriteLine($"I am a Person. {ToString()}");
         }
+
+        // polymorphism using keywords {virtual} and {override}
         public virtual void DoMyJob()
         {
             Console.WriteLine("I am living!");
@@ -34,39 +36,33 @@
             IdentityNumber = idNumber;
         }
 
-        // new      - explicit hides the inherited member
-        // override - override the inherited member
-        public override void Introduce()
+        // new - explicit hides the inherited member
+        public new void Introduce()
         {
             Console.WriteLine($"I'm a citizen of {Country}");
         }
 
-        // polymorphism using keywords {virtual} and {override}
+        // override - override the inherited member
         public override void DoMyJob()
         {
             Console.WriteLine($"I am livin in {Country}, {Address}!");
         }
     }
 
-    // {sealed class} - can not be derived
-    sealed class Employee : Citizen
+    // {sealed class} - can not has child classes
+    /*sealed*/ class Employee : Citizen
     {
         public decimal Salary { get; set; }
         public string Position { get; set; }
 
+        // {base} - reference to the parent instance
         public Employee(long idNumber) : base(idNumber)
         { }
 
-        public override void DoMyJob()
+        // {sealed override} - can not the overried in child classes
+        public /*sealed*/ override void DoMyJob()
         {
-            // {base} - reference to the parent instance
             base.DoMyJob();
-            Console.WriteLine($"My position is {Position}");
-        }
-
-        // {sealed override} - can not the overried 
-        public sealed override void Introduce()
-        {
             Console.WriteLine($"I am working on a {Position} position!");
         }
 
@@ -77,10 +73,11 @@
     }
 
     // can not derive from a sealed class
-    class Administrator // : Employee
+    class Administrator : Employee // - error
     {
+        public Administrator(long idNumber) : base(idNumber) { }
         // can not override sealed methods
-        // public override void Introduce() { } - error
+        public override void DoMyJob() { } // - error
     }
 
     internal class Program
