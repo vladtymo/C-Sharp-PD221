@@ -1,4 +1,6 @@
-﻿namespace _10_overloading
+﻿using _10_overloading.Indexer;
+
+namespace _10_overloading
 {
     class Point3D
     {
@@ -292,6 +294,59 @@
             Console.WriteLine(d);
             Console.WriteLine(p3d);
             Console.WriteLine(p1.ToString());
+
+            ///////////////////////// Indexer Operator
+            Shop shop = new Shop(3);
+
+            ///////// without indexer
+            //shop.SetLaptop(0, new Laptop() { Vendor = "Samsung", Price = 5200 });
+            //Laptop laptop = shop.GetLaptop(1);
+            //Console.WriteLine(laptop);
+
+            ///////// with indexer
+            shop[0] = new Laptop() { Vendor = "Samsung", Price = 5200 };
+            var laptop = shop[0];
+            Console.WriteLine(laptop);
+
+            shop[0] = new Laptop
+            {
+                Vendor = "Samsung",
+                Price = 5200
+            };
+            shop[1] = new Laptop
+            {
+                Vendor = "Asus",
+                Price = 4700
+            };
+            shop[2] = new Laptop
+            {
+                Vendor = "LG",
+                Price = 4300
+            };
+            try
+            {
+                for (int i = 0; i < shop.Length + 1; i++)
+                {
+                    Console.WriteLine(shop[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            // multi-dimentional array
+            Table multArray = new Table(2, 3);
+
+            for (int i = 0; i < multArray.Rows; i++)
+            {
+                for (int j = 0; j < multArray.Cols; j++)
+                {
+                    multArray[i, j] = i + j;
+                    Console.Write($"{multArray[i, j]} ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
