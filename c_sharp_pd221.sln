@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_overloading", "10_overlo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_inheritance", "11_inheritance\11_inheritance.csproj", "{ACB77291-E3CA-455B-A3F2-36F3B7ADC9C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_polymorphism", "12_polymorphism\12_polymorphism.csproj", "{39489162-4CD5-459A-AEA1-13A7DC7044BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12_polymorphism", "12_polymorphism\12_polymorphism.csproj", "{39489162-4CD5-459A-AEA1-13A7DC7044BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13_interfaces", "13_interfaces\13_interfaces.csproj", "{4D8B9297-40BD-49CD-B3E1-18F333A351B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{39489162-4CD5-459A-AEA1-13A7DC7044BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39489162-4CD5-459A-AEA1-13A7DC7044BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39489162-4CD5-459A-AEA1-13A7DC7044BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8B9297-40BD-49CD-B3E1-18F333A351B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8B9297-40BD-49CD-B3E1-18F333A351B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8B9297-40BD-49CD-B3E1-18F333A351B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8B9297-40BD-49CD-B3E1-18F333A351B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
