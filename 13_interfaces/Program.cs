@@ -3,11 +3,19 @@
     // interface - defines public members of the object
     // interface can contains properties, methods, events, indexer
     // naming: I{Name}
-    interface IRunnable
+    interface IRunnable : IMovable // interface inheritance
     {
         // public by default
         int Speed { get; set; }
         void Run();
+    }
+    interface IMovable
+    {
+        // default interface member realization
+        void Move(double distance)
+        {
+            Console.WriteLine($"I went {distance}m...");
+        }
     }
     interface IFlyable
     {
@@ -57,7 +65,6 @@
             Console.WriteLine($"Garrr garr garrr.....");
         }
     }
-
     class Parrot : Animal, IFlyable, ISoundMaker
     {
         public float FlyingHeight { get; set; }
@@ -84,7 +91,6 @@
             Console.WriteLine($"Shark is swimming up to the depth of {SwimmingDepth}m...");
         }
     }
-
     class Turtle : Animal, ISwimable
     {
         public float SwimmingDepth { get; set; }
@@ -102,7 +108,6 @@
             Console.WriteLine($"Turtle is crawling for the {Speed}km/s...");
         }
     }
-
     class Chicken : Animal, IRunnable, IFlyable, ISoundMaker
     {
         public float FlyingHeight { get; set; }
@@ -155,6 +160,7 @@
 
             runner.Speed += 1;
             runner.Run();
+            runner.Move(35);
 
             Introduce(tiger);
             Introduce(chicken);
