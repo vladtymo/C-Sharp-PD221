@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15_file_system", "15_file_s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "16_serialization", "16_serialization\16_serialization.csproj", "{1511DD7E-FCC1-4F8B-A882-530C94BB898E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17_delegates", "17_delegates\17_delegates.csproj", "{14009416-8CD9-43C2-806F-A36331032AA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "17_delegates", "17_delegates\17_delegates.csproj", "{14009416-8CD9-43C2-806F-A36331032AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18_events", "18_events\18_events.csproj", "{93F52BEC-422C-4141-8092-60B7F7D392F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{14009416-8CD9-43C2-806F-A36331032AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14009416-8CD9-43C2-806F-A36331032AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14009416-8CD9-43C2-806F-A36331032AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F52BEC-422C-4141-8092-60B7F7D392F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F52BEC-422C-4141-8092-60B7F7D392F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F52BEC-422C-4141-8092-60B7F7D392F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F52BEC-422C-4141-8092-60B7F7D392F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
