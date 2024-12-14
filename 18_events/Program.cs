@@ -18,14 +18,14 @@
         {
             Console.WriteLine($"{Name} is celebrating his birthday. He is {Age} years old!");
             Console.WriteLine(new string('-', 30));
-
+            
             // notify all friends
             CelebrateEvent?.Invoke(this.Name, this.Age);
             // notify about anniversary
             if (Age % 10 == 0)
                 Anniversary?.Invoke();
         }
-
+        
         public override string ToString()
         {
             return $"My name is {Name}, I'm living in {Addresss}";
