@@ -16,13 +16,15 @@
             // create delegate
             Operation operation = Summ; //new Operation(Summ);
             Operation[] operations = { Mult, Div, Sub, Summ };
-
+            
             // invoke delegate methods
             operation?.Invoke(1, 5);
-            operation(30, 5);
-
+            
             // change method reference
             operation = Div; 
+            
+            if (operation != null)
+                operation(30, 5);
 
             // ---------------- multicast delegate ----------------
             Console.WriteLine("-------------- Multicast --------------");
@@ -30,8 +32,8 @@
             operation += Summ;
             operation += Sub;
             // remove reference
-            operation -= Div;
-            operation -= Mult;
+            // operation -= Div;
+            // operation -= Mult;
 
             double? result = operation?.Invoke(10, 2);
             Console.WriteLine($"Invoke Result: {result}");

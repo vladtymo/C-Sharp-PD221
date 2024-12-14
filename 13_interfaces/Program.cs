@@ -129,11 +129,18 @@
         }
     }
 
+    class SuperChicken : Chicken
+    {
+        
+    }
+
 
     internal class Program
     {
         public static void Introduce(ISoundMaker animal)
         {
+            IRunnable runner = new SuperChicken();
+            
             Console.WriteLine("----------- Introduce animal -----------");
             Console.WriteLine(animal);
             animal.MakeSound();

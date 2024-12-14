@@ -32,23 +32,24 @@ namespace _14_system_interfaces
         public int CompareTo(Player? other)
         {
             /* result value:
-             * <0 - this less then other
+             * <0 - this less than other
              * =0 - this is equals to other
-             * >0 - this is bigger then other
+             * >0 - this is bigger than other
              */
-
-            return this.Goals.CompareTo(other?.Goals);
+            
+            if (other == null) throw new ArgumentException();
+            return other.Productivity.CompareTo(this.Productivity);
         }
 
         public object Clone()
         {
             // shallow copy - copy value type and references
             Player copy = (Player)this.MemberwiseClone();
-
+        
             // deep copy - copy the values of all reference types
             copy.Name = (string)this.Name.Clone();
             //...
-
+        
             return copy;
         }
     }
@@ -111,7 +112,7 @@ namespace _14_system_interfaces
         static void Main(string[] args)
         {
             Team dreamTeam = new Team();
-
+            
             // foreach() - require a realizarion of the GetEnumerator() method
             foreach (Player p in dreamTeam) 
             {
@@ -136,7 +137,7 @@ namespace _14_system_interfaces
             Console.WriteLine("----------- Cloning Object -----------");
             Player player = new Player(10, "Ronaldinho Gaúcho", 144, 210);
 
-            Player copy = (Player)player.Clone(); // deep copy
+            Player copy = (Player)player.Clone(); // shallow copy
 
             player.AddGame(3);
             Console.WriteLine(copy);
