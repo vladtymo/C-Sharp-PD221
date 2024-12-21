@@ -19,6 +19,9 @@ namespace _19_linq
         {
             int[] array = { 1, 5, 5, 120, 6, 6, -4, 44, -30, -1, -1, 0, 4, 194, 242, 52 };
             string[] colors = { "red", "gray", "white", "blue", "green", "yellow", "cyan", "dark" };
+
+            var copy = array.Where((x) => x > 10);
+            
             Product[] products =
             {
                 new Product() { Model = "Samsung", Price = 345.5M, Category = "Phone" },
@@ -34,12 +37,12 @@ namespace _19_linq
             // Where() - фільтрує колекцію елементів по умові
             //var result = array.Where(IsEven);
             //var result = array.Where((n) => n % 2 == 0);
-            var result = array.Where((n) => Math.Pow(n, 2) < 20);
+            var result = array.Where((n) => n % 3 == 0);
 
             ShowCollection(result, "Filtered");
 
             // OrderBy() - сортує елементи по певному параметру
-            result = array.OrderBy(x => Math.Abs(x));
+            result = array.OrderBy(x => x);
             result = array.OrderByDescending(x => Math.Abs(x));
             var prSorted = products.OrderBy(x => x.Price);
 
@@ -63,6 +66,7 @@ namespace _19_linq
             var totalChars = colors.Sum(x => x.Length);
             var avg = array.Average();
             var negativeCount = array.Count(x => x < 0);
+            var fourCharColors = colors.Count(x => x.Length == 4);
 
             Console.WriteLine("Max number: " + maxNumber);
             Console.WriteLine("Min price: " + minPrice);
@@ -70,25 +74,26 @@ namespace _19_linq
             Console.WriteLine("Total chars: " + totalChars);
             Console.WriteLine("Average number: " + avg);
             Console.WriteLine("Negative count: " + negativeCount);
+            Console.WriteLine("4-char colors: " + fourCharColors);
 
             // Take(), TakeLast(), TakeWhile(), Distict()
             var topNumbers = array.OrderByDescending(x => x).Take(3); // TOP 3 numbers
             var firstPositiveNumbers = array.TakeWhile(x => x > 0);
 
-            ShowCollection(firstPositiveNumbers, "First Positives");
             ShowCollection(topNumbers, "TOP 3 numbers");
+            ShowCollection(firstPositiveNumbers, "First Positives");
             ShowCollection(array.Distinct(), "Distinct");
 
             // First(), FirstOrDefault(), Last(), LastOrDefault()
-            var first = array.First(x => x > 200);                           // if no element - throw exception
+            var first = array.First(x => x > 100);                           // if no element - throw exception
             var firstProduct = products.FirstOrDefault(p => p.Price > 1000); // if no element - return default value
 
+            Console.WriteLine("First: " + first);
+            
             if (firstProduct != null)
                 Console.WriteLine("First product: " + firstProduct);
             else
                 Console.WriteLine("Product not found!");
-
-            Console.WriteLine("First: " + first);
 
             // GroupBy() - виконує групування елементів по певному ключу
             //var groups = colors.GroupBy(s => s.Length);
@@ -123,6 +128,7 @@ namespace _19_linq
                 Console.Write(item + " ");
             }
             Console.WriteLine();
+            Console.ReadKey();
         }
         static bool IsEven(int n)
         {
