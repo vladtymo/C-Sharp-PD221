@@ -1,22 +1,25 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.Xml.Serialization;
 
 // Attribute - add metadata to member (property, class, method, interface...)
-[Serializable]
+//[Serializable]
+[DataContract]
+//[KnownType(typeof(List<Person>))]
 public class Person
 {
-    [NonSerialized]
-    private static int initialId = 1000;
+    //[NonSerialized]
+    [DataMember] private static int initialId = 1000;
 
-    private string password;
+    [DataMember] private string password;
 
-    public int Id { get; set; }
-    public string Name { get; set; }
+    [DataMember] public int Id { get; set; }
+    [DataMember] public string Name { get; set; }
 
-    public DateTime Birthdate { get; set; }
-    public string Address { get; set; }
-    public string[] Children { get; set; } = { "Bob", "Vika", "Luda" };
+    [DataMember] public DateTime Birthdate { get; set; }
+    [DataMember] public string Address { get; set; }
+    //[DataMember] public string[] Children { get; set; } = { "Bob", "Vika", "Luda" };
 
     public Person() { }
     public Person(string name, DateTime birth, string? address, string? password)
@@ -52,7 +55,7 @@ internal class Program
             new("Olga", new DateTime(1998, 2, 24), "San-Francisco, USA", "Test1122")
         };
 
-        // --------------- .Serialize(object) - convert object to JSON format
+        // --------------- Serialize(object) - convert object to JSON format
         string json = JsonSerializer.Serialize(people);
 
         // save to file
@@ -61,7 +64,7 @@ internal class Program
         // read json from file
         string jsonResult = File.ReadAllText("data.json");
 
-        // --------------- .Deserealize(json) - create object instance from JSON data
+        // --------------- Deserealize(json) - create object instance from JSON data
         var peopleResult = JsonSerializer.Deserialize<List<Person>>(jsonResult);
 
         foreach (var p in peopleResult)
@@ -72,32 +75,52 @@ internal class Program
         // ================= XML =================
         // serialize public members only
         XmlSerializer serializer = new(typeof(List<Person>));
-
+        
         using (Stream fs = File.Create("data.xml"))
         {
             // fs.Write() - write content to file
             // fs.Read()  - read content from file
-
+        
             serializer.Serialize(fs, people);
         
         } // close stream
 
         // ================= Binary =================
         // serialize all members
-        BinaryFormatter formatter = new BinaryFormatter();
-
-        using (Stream fs = File.Create("data.bin"))
-        {
-            formatter.Serialize(fs, people);
-        }
-
-        List<Person> binaryResult = null;
-        using (Stream fs = File.OpenRead("data.bin"))
-        {
-            binaryResult = (List<Person>)formatter.Deserialize(fs);
-        }
-
-        foreach (var p in binaryResult)
+        
+        // застарілий варіант
+        // BinaryFormatter formatter = new BinaryFormatter();
+        //
+        //  using (Stream fs = File.Create("data.bin"))
+        //  {
+        //      formatter.Serialize(fs, people);
+        //  }
+        //
+        //  List<Person> binaryResult = null;
+        //  using (Stream fs = File.OpenRead("data.bin"))
+        //  {
+        //      binaryResult = (List<Person>)formatter.Deserialize(fs);
+        //  }
+        //
+        //  foreach (var p in binaryResult)
+        //  {
+        //      Console.WriteLine(p);
+        //  }
+        
+        // один з актуальних варіантів
+        // Serialize
+        var binarySerializer = new DataContractSerializer(typeof(List<Person>));
+        using var memoryStream = new MemoryStream();
+        binarySerializer.WriteObject(memoryStream, people);
+        byte[] binaryData = memoryStream.ToArray();
+        
+        File.WriteAllBytes("data.bin", binaryData);
+        
+        // Deserialize
+        memoryStream.Position = 0;
+        var deserializedPeople = (List<Person>)binarySerializer.ReadObject(memoryStream)!;
+        
+        foreach (var p in deserializedPeople)
         {
             Console.WriteLine(p);
         }
