@@ -16,15 +16,14 @@ class Program
         // $ - кінець тексту повинен відповідати шаблону
 
         string pattern = @"^\w{2,}@\w+.\w+$";
+        regex = new Regex(@"^\w[\w.]{2,}\w\@[a-z]+\.[a-z]{2,4}$");
 
         bool isValid = false;
         do
         {
             Console.Write("Enter your email address: ");
             string email = Console.ReadLine();
-
-            regex = new Regex(@"^\w{2,}@\w+.\w+$");
-
+            
             isValid = regex.IsMatch(email);
 
             Console.WriteLine(isValid ? "Email is valid!" : "Not valid!");
@@ -39,8 +38,7 @@ class Program
             [^abc]	not a, b, or c
             [a-g]	character between a & g
          */
-        pattern = "^[A-Z][a-z]*$";
-        regex = new Regex(pattern);
+        regex = new Regex(@"^[A-Z][a-z]*$");
 
         Console.WriteLine("\n\n");
         while (true)
@@ -51,11 +49,7 @@ class Program
             if (input == "exit")
                 break;
 
-            Console.WriteLine(
-                input != null && regex.IsMatch(input)
-                    ? $"String \"{input}\" matched \"{pattern}\""
-                    : $"String \"{input}\" NOT matched \"{pattern}\"");
-
+            Console.WriteLine(regex.IsMatch(input) ? "Valid input!" : "Not valid input!");
             Console.WriteLine(new string('-', 50));
         }
 
@@ -65,5 +59,16 @@ class Program
         string output = Regex.Replace(text, @"(\d{2})(\d{2})(\d{2})(\d{3})", "+38 (0$1)-$2-$3-$4");
         //string output = Regex.Replace(text, @"\d{9}", (m) => string.Format("{0:+38 (0##)-##-##-###}", Convert.ToInt64(m.Value)));
         Console.WriteLine(output);
+        
+        // Split using Regex
+        text = "Hello, how are you doing? I'am fine, thanks!!!";
+
+        var words = text.Split(new[] {',', '.', ' ', '?', '!'}, StringSplitOptions.RemoveEmptyEntries);
+        foreach (var w in words) Console.WriteLine(w);
+
+        regex = new Regex(@"[\s.,?!]+");
+
+        words = regex.Split(text);
+        foreach (var w in words) Console.WriteLine(w);
     }
 }
